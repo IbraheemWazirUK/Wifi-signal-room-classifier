@@ -30,3 +30,7 @@ example_training_dataset = np.array(
         [6, 7, 1],
     ]
 )
+
+example_tree_dataset = np.array(
+    [[0, 0, 0], [0, 2, 0], [0, 3, 0], [1, 0, 1], [1, 1, 1], [1, 2, 2], [1, 3, 2]]
+)

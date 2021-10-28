@@ -1,3 +1,6 @@
 from splitrule import SplitRule
 def find_split(training_dataset):
-    return SplitRule(0, 0)
+    (N, k) = training_dataset.shape
+    return SplitRule(0, N)
+
+

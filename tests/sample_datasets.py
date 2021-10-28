@@ -9,8 +9,9 @@ same_label_training_dataset = np.array(
 example_training_dataset = np.array(
     [
         [1, 3, 0],
+        [1, 4, 0],
         [1, 6, 0],
-        [1, 7, 1],
+        [1, 7, 0],
         [2, 3, 1],
         [2, 5, 0],
         [2, 6, 0],

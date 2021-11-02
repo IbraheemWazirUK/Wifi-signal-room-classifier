@@ -5,7 +5,12 @@ one_instance_training_dataset = np.array([[1, 2, 3, 4, 5]])
 same_label_training_dataset = np.array(
     [[1, 2, 5], [2, 3, 5], [4, 5, 5], [6, 7, 5], [8, 9, 5], [10, 11, 5]]
 )
-
+example_training_dataset2 = np.array(
+    [
+        [-56.0, -52.0, -51.0, -57.0, -64.0, -86.0, -91.0, 3.0],
+        [-60.0, -54.0, -54.0, -60.0, -64.0, -88.0, -88.0, 4.0],
+    ]
+)
 example_training_dataset = np.array(
     [
         [1, 3, 0],

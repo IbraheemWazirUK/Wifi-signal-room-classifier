@@ -19,6 +19,8 @@ def split(x_sorted, j):
 
 def H(label_count, total):
     res = 0
+    if total == 0:
+        return 0
     for label in label_count:
         p = label_count[label] / total
         if p != 0:
@@ -74,12 +76,12 @@ def find_split(training_dataset):
                     labels_left_total += 1
                     labels_right_count[y_sorted[j]] -= 1
                     continue
-                if y_sorted[j] in labels_left_count:
-                    labels_left_count[y_sorted[j]] += 1
-                else:
-                    labels_left_count[y_sorted[j]] = 1
-                labels_left_total += 1
-                labels_right_count[y_sorted[j]] -= 1
+            if y_sorted[j] in labels_left_count:
+                labels_left_count[y_sorted[j]] += 1
+            else:
+                labels_left_count[y_sorted[j]] = 1
+            labels_left_total += 1
+            labels_right_count[y_sorted[j]] -= 1
             cur_split_rule = SplitRule(i, sorted_column[j])
             (l_dataset, r_dataset) = split(training_sorted, j)
             labels_right_total = N - labels_left_total

@@ -3,6 +3,7 @@ from sample_datasets import (
     one_instance_training_dataset,
     same_label_training_dataset,
     example_training_dataset,
+    example_training_dataset2,
 )
 
 
@@ -26,8 +27,14 @@ def test_example_dataset_returns_correct_split():
     assert split.split_value == 4
 
 
-def test_axample_dataset_returns_correct_split_twice():
+def test_example_dataset_returns_correct_split_twice():
     (split, l_dataset, r_dataset) = find_split(example_training_dataset)
     (split2, l_dataset2, r_dataset2) = find_split(l_dataset)
     assert split2.attribute == 0
     assert split2.split_value == 1
+
+
+def test_example_two_returns_correct_split():
+    (split, l_dataset, r_dataset) = find_split(example_training_dataset2)
+    print(split)
+    assert l_dataset.shape == r_dataset.shape

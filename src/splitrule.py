@@ -4,4 +4,4 @@ class SplitRule:
         self.split_value = split_value
 
     def __str__(self):
-        return "A" + self.attribute + " > " + self.value
+        return "A" + str(self.attribute) + " > " + str(self.split_value)

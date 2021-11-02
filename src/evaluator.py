@@ -1,10 +1,11 @@
 from classifier import classify
 
 
-def get_evaluation_metrics(test_db, trained_tree):
+def get_evaluation_metrics(test_db, trained_tree, labels):
     (N, k) = test_db.shape
     correct_count = 0
-    confusion_matrix = {}
+    n = len(labels)
+    confusion_matrix = np.zeros((n, n), dtype=int)
     true_positive = {}
     false_negative = {}
     for i in range(N):
@@ -16,13 +17,9 @@ def get_evaluation_metrics(test_db, trained_tree):
         else:
             false_positive[predicted_label] = false_positive.get(predicted_label, 0) + 1
             false_negative[true_label] = false_negative.get(true_label, 0) + 1
-        if predicted_label in confusion_matrix:
-            if true_label in confusion_matrix[preidcted_label]:
-                confusion_matrix[predicted_label][true_label] += 1
-            else:
-                confusion_matrix[predicted_label][true_label] = 1
-        else:
-            confusion_matrix[predicted_label] = {true_label: 1}
+        i = labels[prdeicted_label]
+        j = labels[true_label]
+        confusion_matrix[i,j] += 1
     accuracy = correct_count / N
     precision = {}
     recall = {}
@@ -41,5 +38,11 @@ def get_evaluation_metrics(test_db, trained_tree):
 
 
 def evaluate(test_db, trained_tree):
-    (cm, acc, p, r, f) = get_evaluation_metrics(test_db, trained_tree)
-    return acc
+    (N, k) = test_db.shape
+    correct_count = 0
+    for i in range(N):
+        predicted_label = classify(test_db[i], trained_tree)
+        true_label = test_db[i, -1]
+        if true_label == predicted_label:
+            correct_count += 1
+    return correct_count/N

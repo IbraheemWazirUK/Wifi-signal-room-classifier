@@ -1,5 +1,5 @@
 from datasets import clean_dataset
-from dtl import decision_tree_learning
+from cross_validation import get_cross_validation_metrics
 
-(tree, depth) = decision_tree_learning(clean_dataset, 0)
-print(depth)
+avgs = get_cross_validation_metrics(clean_dataset)
+print(avgs)

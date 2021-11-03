@@ -1,6 +1,7 @@
 from classifier import classify
 import numpy as np
 
+
 def get_evaluation_metrics(test_db, trained_tree, labels):
     (N, k) = test_db.shape
     correct_count = 0
@@ -26,15 +27,9 @@ def get_evaluation_metrics(test_db, trained_tree, labels):
     recall = np.zeros(n)
     F1_measures = np.zeros(n)
     for i in range(n):
-        precision[i] = true_positive[i] / (
-            true_positive[i] + false_positive[i]
-        )
-        recall[i] = true_positive[i] / (
-            true_positive[i] + false_negative[i]
-        )
-        F1_measures[i] = (2 * precision[i] * recall[i]) / (
-            precision[i] + recall[i]
-        )
+        precision[i] = true_positive[i] / (true_positive[i] + false_positive[i])
+        recall[i] = true_positive[i] / (true_positive[i] + false_negative[i])
+        F1_measures[i] = (2 * precision[i] * recall[i]) / (precision[i] + recall[i])
     return (confusion_matrix, accuracy, precision, recall, F1_measures)
 
 

@@ -6,6 +6,7 @@ def divide_into_folds(dataset, k, rng):
     rng.shuffle(db)
     return np.split(db, k)
 
+
 def create_k_models(dataset, k, rng):
     folds = divide_into_folds(dataset, k, rng)
     models = []

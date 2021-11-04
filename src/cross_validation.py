@@ -14,7 +14,7 @@ def get_labels(dataset):
         if not (label in labels):
             labels[label] = label_count
             label_count += 1
-    print(labels)
+    print("Label to index map: " + str(labels))
     return labels
 
 
